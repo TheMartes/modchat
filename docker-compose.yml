@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  modchat:
+    container_name: modchat
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    networks:
+      - modchat
+networks:
+  modchat:
